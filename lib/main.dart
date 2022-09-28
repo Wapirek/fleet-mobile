@@ -1,6 +1,8 @@
-import 'package:fleet_mobile/constants/constans.dart';
+
+import 'package:fleet_mobile/pages/dashboard_page.dart';
+import 'package:fleet_mobile/pages/trending_page.dart';
 import 'package:flutter/material.dart';
-import 'package:fleet_mobile/constants/constans.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -28,8 +30,8 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
-
-  //TODO add pages list<widget>
+//TODO new page needed add in this List!!!
+  List<Widget> pages = const [DashboardPage(),TrendingPage(),TrendingPage(),TrendingPage(),TrendingPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +39,14 @@ class _RootPageState extends State<RootPage> {
         //ToDO change to current page title
         title: const Text("Fleet"),
       ),
-      // ToDO add body:pages[currentPage]
+      body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.trending_down), label: "expenses"),
-          NavigationDestination(icon: Icon(Icons.trending_up), label: "income"),
-          NavigationDestination(icon: Icon(Icons.star), label: "goals"),
-          NavigationDestination(icon: Icon(Icons.settings), label: "settings"),
+          NavigationDestination(icon: Icon(Icons.trending_down), label: "Expenses"),
+          NavigationDestination(icon: Icon(Icons.trending_up), label: "Income"),
+          NavigationDestination(icon: Icon(Icons.star), label: "Goals"),
+          NavigationDestination(icon: Icon(Icons.settings), label: "Settings"),
         ],
         onDestinationSelected: (int index) {
           setState(() {
