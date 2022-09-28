@@ -31,19 +31,24 @@ class _TitleDashboardState extends State<TitleDashboard> {
         width: double.infinity,
         height: widgetHeight,
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
+            border: Border.all(
+            color: Colors.black38
+          ),
             //color: Color(0xff182345),
-
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius: const BorderRadius.all(
+               Radius.circular(20))),
         child: SafeArea(
           child: Row(
             children: [
+              // Label Column
               Column(
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 20),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    height: widgetHeight,
+                    padding: const EdgeInsets.symmetric(horizontal: 1),
+                    // -2 because Border have 1px
+                    height: widgetHeight-2,
                     //TODO Change color for changing type of tile
                     color: Color(widget.colorOfWidget!),
                     child: Icon(
@@ -53,6 +58,7 @@ class _TitleDashboardState extends State<TitleDashboard> {
                   )
                 ],
               ),
+              // Details Column
               Expanded(
                 child: Container(
                   height: double.infinity,
@@ -63,14 +69,14 @@ class _TitleDashboardState extends State<TitleDashboard> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         const Text(
-                          "Ostatni miesiąć",
+                          "Ostatni miesiąc",
                           style:
                               TextStyle(color: Color(0xff9F9AA4), fontSize: 22),
                         ),
                         Text(
                           widget.titleStr!,
                           style:
-                              TextStyle(color: Color(0xff151515), fontSize: 15),
+                              TextStyle(color: const Color(0xff151515), fontSize: 15),
                         ),
                         Expanded(
                           child: Row(
