@@ -1,7 +1,8 @@
 
 import 'package:fleet_mobile/pages/dashboard_page.dart';
-import 'package:fleet_mobile/pages/trending_page.dart';
+import 'package:fleet_mobile/pages/transaction_page.dart';
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -30,9 +31,11 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+
   int currentPage = 0;
+
 //TODO new page needed add in this List!!!
-  List<Widget> pages = const [DashboardPage(),TrendingPage(),TrendingPage(),TrendingPage(),TrendingPage()];
+  List<Widget> pages = const [DashboardPage(),TransactionPage(),TransactionPage(),TransactionPage(),TransactionPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +43,10 @@ class _RootPageState extends State<RootPage> {
         //ToDO change to current page title
         title: const Text("Fleet"),
       ),
-      body: pages[currentPage],
+      body: IndexedStack(
+        index: currentPage,
+        children:pages,
+      ),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: "Home"),
