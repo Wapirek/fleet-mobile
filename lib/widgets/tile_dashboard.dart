@@ -2,6 +2,7 @@
 import 'package:fleet_mobile/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TitleDashboard extends StatefulWidget {
   const TitleDashboard(
@@ -19,6 +20,8 @@ class TitleDashboard extends StatefulWidget {
 }
 
 class _TitleDashboardState extends State<TitleDashboard> {
+  var formatter= NumberFormat.currency(locale: 'pl_PL', symbol: 'Zł');
+
   @override
   void initState() {
     super.initState();
@@ -83,11 +86,13 @@ class _TitleDashboardState extends State<TitleDashboard> {
                                  Expanded(
                                   flex: 3,
                                   child: Text(
-                                    widget.amount.toString(),
+                                    formatter.format(widget.amount),
                                     style: TextStyle(
-                                        fontSize: 35,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
                                         color: Color(widget.colorOfWidget!),
-                                        decoration: TextDecoration.underline),
+                                        decoration: TextDecoration.underline
+                                    ),
                                   ),
                                 ),
                                 Expanded(
