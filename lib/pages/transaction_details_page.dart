@@ -30,7 +30,9 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
               ),
             ),
           ),
-          Container(),
+          Container(
+            child: Text('${widget.transaction.transactionName}'),
+          ),
           Container(),
         ],
         ),

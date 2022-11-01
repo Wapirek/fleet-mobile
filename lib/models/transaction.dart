@@ -1,3 +1,5 @@
+import 'package:fleet_mobile/models/product.dart';
+
 class Transaction {
   int transactionId;
   String transactionName;
@@ -6,10 +8,13 @@ class Transaction {
   int transactionPrice;
   int? transactionAmount;
   String transactionDate;
+  var listProduct = [] as Product;
 //TODO: Lista produkrów do dadania
   bool get isIncome {
     return transactionPrice > 0 ? true : false;
   }
+
+
 
   Transaction({
     required this.transactionId,
