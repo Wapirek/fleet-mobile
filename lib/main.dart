@@ -1,5 +1,6 @@
 
 import 'package:fleet_mobile/pages/dashboard_page.dart';
+import 'package:fleet_mobile/pages/transaction_add_page.dart';
 import 'package:fleet_mobile/pages/transaction_page.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class _RootPageState extends State<RootPage> {
   int currentPage = 0;
 
 //TODO new page needed add in this List!!!
-  List<Widget> pages = const [DashboardPage(),TransactionPage(),TransactionPage(),TransactionPage(),TransactionPage()];
+  List<Widget> pages = const [DashboardPage(),TransactionListPage(),TransactionListPage(),TransactionListPage(),TransactionListPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +47,11 @@ class _RootPageState extends State<RootPage> {
       body: IndexedStack(
         index: currentPage,
         children:pages,
+      ),
+      //TODO change FAB to more interact
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const TransactionAddPage()));},
+        child: const Icon(Icons.add),
       ),
       bottomNavigationBar: NavigationBar(
         destinations: const [

@@ -8,13 +8,11 @@ class Transaction {
   int transactionPrice;
   int? transactionAmount;
   String transactionDate;
-  var listProduct = [] as Product;
-//TODO: Lista produkrów do dadania
+  List<Product>? listProducts;
+
   bool get isIncome {
     return transactionPrice > 0 ? true : false;
   }
-
-
 
   Transaction({
     required this.transactionId,
@@ -25,4 +23,8 @@ class Transaction {
     this.transactionTyp,
     this.transactionCategory,
   });
+
+  void addProduct(Product product){
+    listProducts?.add(product);
+  }
 }

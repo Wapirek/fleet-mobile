@@ -156,45 +156,45 @@ List<Transaction> transactionList = [
       transactionDate: '20.12.2004'),
 ];
 
-class TransactionPage extends StatelessWidget {
-  const TransactionPage({Key? key}) : super(key: key);
-
+class TransactionListPage extends StatelessWidget {
+  const TransactionListPage({Key? key}) : super(key: key);
+  //floatingActionButton: FloatingActionButton.small(onPressed: (){}),
   @override
   Widget build(BuildContext context) {
     var formatter= NumberFormat.currency(locale: 'pl_PL', symbol: 'PLN');
-
     return ListView.builder(
         itemCount: transactionList.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
+
               child: ListTile(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> TransactionDetailsPage(transaction: transactionList[index])));
-            },
-            focusColor: Color(0xffff0000),
-            //title: Text("item ${(index+1)}"),
-            leading: Expanded(
-                child: Text(
-                  formatter.format(transactionList[index].transactionPrice),
-              style: TextStyle(
-                  color: transactionList[index].isIncome
-                      ? Colors.green
-                      : Colors.red,
-                  fontWeight: FontWeight.bold),
-            )),
-            title: Column(
-              children: [
-                Text(
-                  (transactionList[index].transactionName),
-                  overflow: TextOverflow.ellipsis,
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> TransactionDetailsPage(transaction: transactionList[index])));
+                },
+                focusColor: Color(0xffff0000),
+                //title: Text("item ${(index+1)}"),
+                leading: Expanded(
+                    child: Text(
+                      formatter.format(transactionList[index].transactionPrice),
+                      style: TextStyle(
+                          color: transactionList[index].isIncome
+                              ? Colors.green
+                              : Colors.red,
+                          fontWeight: FontWeight.bold),
+                    )),
+                title: Column(
+                  children: [
+                    Text(
+                      (transactionList[index].transactionName),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    //Text("Kategoria ${(transactionList[index].transactionCategory)}"),
+                    //Text("transactionTyp ${(transactionList[index].transactionTyp)}"),
+                    //Text(transactionList[index].transactionDate),
+                  ],
                 ),
-                //Text("Kategoria ${(transactionList[index].transactionCategory)}"),
-                //Text("transactionTyp ${(transactionList[index].transactionTyp)}"),
-                //Text(transactionList[index].transactionDate),
-              ],
-            ),
-            trailing: Text(transactionList[index].transactionDate),
-          ));
+                trailing: Text(transactionList[index].transactionDate),
+              ));
         });
   }
 }
