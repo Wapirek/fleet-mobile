@@ -166,10 +166,12 @@ class TransactionListPage extends StatelessWidget {
         itemCount: transactionList.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
-
               child: ListTile(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> TransactionDetailsPage(transaction: transactionList[index])));
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context)=> TransactionDetailsPage(transaction: transactionList[index])
+                      ));
                 },
                 focusColor: Color(0xffff0000),
                 //title: Text("item ${(index+1)}"),

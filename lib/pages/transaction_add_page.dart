@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class TransactionAddPage extends StatefulWidget {
   const TransactionAddPage({Key? key}) : super(key: key);
@@ -34,14 +35,14 @@ class _TransactionAddPageState extends State<TransactionAddPage> {
             ),
             _paddingInsideTransaction(
               //TODO default today
-                child: TextField(
+              child: TextField(
                     keyboardType: TextInputType.datetime,
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(),
                       hintText: 'Data',
                     )
                 )
-            )
+            ),
         ],
         ),
       ),

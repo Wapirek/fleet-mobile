@@ -1,18 +1,6 @@
 import 'package:fleet_mobile/models/product.dart';
 
 class Transaction {
-  int transactionId;
-  String transactionName;
-  String? transactionCategory;
-  String? transactionTyp;
-  int transactionPrice;
-  int? transactionAmount;
-  String transactionDate;
-  List<Product>? listProducts;
-
-  bool get isIncome {
-    return transactionPrice > 0 ? true : false;
-  }
 
   Transaction({
     required this.transactionId,
@@ -23,6 +11,20 @@ class Transaction {
     this.transactionTyp,
     this.transactionCategory,
   });
+
+  int transactionId;
+  String transactionName;
+  String? transactionCategory;
+  String? transactionTyp;
+  int transactionPrice;
+  int? transactionAmount;
+  String transactionDate;
+  List<Product>? listProducts;
+  //Dodać cykliczność
+  //
+  bool get isIncome {
+    return transactionPrice > 0 ? true : false;
+  }
 
   void addProduct(Product product){
     listProducts?.add(product);
