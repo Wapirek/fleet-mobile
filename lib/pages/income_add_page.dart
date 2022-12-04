@@ -15,11 +15,12 @@ class _IncomeAddPageState extends State<IncomeAddPage> {
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final amountController = TextEditingController();
-
+  final periodicController = TextEditingController();
   @override
   void dispose() {
     nameController.dispose();
     amountController.dispose();
+    periodicController.dispose();
     super.dispose();
   }
 
@@ -40,7 +41,7 @@ class _IncomeAddPageState extends State<IncomeAddPage> {
                   const SizedBox(height: 8),
                   AmountFieldWidget(controller: amountController),
                   const SizedBox(height: 8),
-                  IsPeriodicFieldWidget(),
+                  IsPeriodicFieldWidget(controller: periodicController,),
                   buildButton()
                 ],
               )

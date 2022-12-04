@@ -10,6 +10,7 @@ class AmountFieldWidget extends StatefulWidget {
 }
 
 class _AmountFieldWidgetState extends State<AmountFieldWidget> {
+
   @override
   void initState() {
     super.initState();
