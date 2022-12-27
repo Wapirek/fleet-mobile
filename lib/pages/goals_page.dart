@@ -1,3 +1,4 @@
+import 'package:fleet_mobile/widgets/goal_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fleet_mobile/models/goal.dart';
 
@@ -18,22 +19,13 @@ class _GoalsPageState extends State<GoalsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:ReorderableListView(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        children: <Widget>[
-          for (int index = 0; index < goalsList.length; index += 1)
-            ListTile(
-              key: Key('$index'),
-              title: Text('Item ${goalsList[index].name}'),
-            ),
-        ],
-        onReorder: (int oldIndex, int newIndex) {
-          setState(() {
-            if (oldIndex < newIndex) {
-              newIndex -= 1;
-            }
-
-          });
+      child:ListView.builder(
+        itemCount: goalsList.length,
+        itemBuilder: (BuildContext context, int index){
+          return GoalCardWidget(
+            name: goalsList[index].name,
+            amount: goalsList[index].amount,
+          );
         },
       )
     );

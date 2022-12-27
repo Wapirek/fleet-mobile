@@ -1,4 +1,5 @@
 import 'package:fleet_mobile/pages/dashboard_page.dart';
+import 'package:fleet_mobile/pages/goal_add_page.dart';
 import 'package:fleet_mobile/pages/goals_page.dart';
 import 'package:fleet_mobile/pages/income_add_page.dart';
 import 'package:fleet_mobile/pages/settings_page.dart';
@@ -66,7 +67,6 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //ToDO change to current page title
         title: const Text("Fleet"),
         actions: <Widget>[
           Padding(
@@ -97,7 +97,14 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
             title: "Przychody",
             titleStyle:  const TextStyle(fontSize: 16, color: Colors.white),
             bubbleColor: Colors.blue,
-            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const IncomeAddPage()));})
+            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const IncomeAddPage()));}),
+        Bubble(
+            icon: Icons.star,
+            iconColor: Colors.white,
+            title: "Cel",
+            titleStyle:  const TextStyle(fontSize: 16, color: Colors.white),
+            bubbleColor: Colors.blue,
+            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const GoalAddPage()));})
       ],
         animation: _animation!,
         onPress: () => _animationController!.isCompleted
