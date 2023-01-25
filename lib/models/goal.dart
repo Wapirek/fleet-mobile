@@ -2,9 +2,13 @@ class Goal {
   int id;
   String name;
   int amount;
-  int deposit = 0;
+  int deposit;
 
-  Goal({required this.id, required this.name, required this.amount});
+  Goal(
+      {required this.id,
+      required this.name,
+      required this.amount,
+      required this.deposit});
 
   int get left {
     return amount - left;

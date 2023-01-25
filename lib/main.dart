@@ -34,8 +34,8 @@ class RootPage extends StatefulWidget {
   State<RootPage> createState() => _RootPageState();
 }
 
-class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin{
-
+class _RootPageState extends State<RootPage>
+    with SingleTickerProviderStateMixin {
   Animation<double>? _animation;
   AnimationController? _animationController;
 
@@ -47,11 +47,12 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
     );
 
     final curvedAnimation =
-    CurvedAnimation(curve: Curves.easeInOut, parent: _animationController!);
+        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController!);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     super.initState();
   }
+
   int currentPage = 0;
 
 //TODO new page needed add in this List!!!
@@ -83,37 +84,53 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
         children: pages,
       ),
       //TODO change FAB to more interact
-      floatingActionButton: FloatingActionBubble(items: <Bubble>[
-        Bubble(
-            icon: Icons.trending_down,
-            iconColor: Colors.white,
-            title: "Transakcja",
-            titleStyle:  const TextStyle(fontSize: 16, color: Colors.white),
-            bubbleColor: Colors.blue,
-            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const TransactionAddPage()));}),
-        Bubble(
-            icon: Icons.trending_up,
-            iconColor: Colors.white,
-            title: "Przychody",
-            titleStyle:  const TextStyle(fontSize: 16, color: Colors.white),
-            bubbleColor: Colors.blue,
-            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const IncomeAddPage()));}),
-        Bubble(
-            icon: Icons.star,
-            iconColor: Colors.white,
-            title: "Cel",
-            titleStyle:  const TextStyle(fontSize: 16, color: Colors.white),
-            bubbleColor: Colors.blue,
-            onPress: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> const GoalAddPage()));})
-      ],
+      floatingActionButton: FloatingActionBubble(
+        items: <Bubble>[
+          Bubble(
+              icon: Icons.trending_down,
+              iconColor: Colors.white,
+              title: "Transakcja",
+              titleStyle: const TextStyle(fontSize: 16, color: Colors.white),
+              bubbleColor: Colors.blue,
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TransactionAddPage()));
+              }),
+          Bubble(
+              icon: Icons.trending_up,
+              iconColor: Colors.white,
+              title: "Przychody",
+              titleStyle: const TextStyle(fontSize: 16, color: Colors.white),
+              bubbleColor: Colors.blue,
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const IncomeAddPage()));
+              }),
+          Bubble(
+              icon: Icons.star,
+              iconColor: Colors.white,
+              title: "Cel",
+              titleStyle: const TextStyle(fontSize: 16, color: Colors.white),
+              bubbleColor: Colors.blue,
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GoalAddPage()));
+              })
+        ],
         animation: _animation!,
         onPress: () => _animationController!.isCompleted
-        ? _animationController!.reverse()
+            ? _animationController!.reverse()
             : _animationController!.forward(),
         backGroundColor: Colors.blue,
         iconColor: Colors.white,
         iconData: Icons.add,
-    ),
+      ),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: "Home"),

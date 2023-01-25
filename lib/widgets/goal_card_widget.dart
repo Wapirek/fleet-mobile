@@ -1,21 +1,43 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class GoalCardWidget extends StatelessWidget {
   final String name;
+  final int deposit;
   final int amount;
-  Function(BuildContext)? deleteFunction;
 
-  GoalCardWidget({Key? key, required this.name, required this.amount})
+  Function(BuildContext)? deleteFunction;
+  Function(BuildContext)? addDepositFunction;
+
+  GoalCardWidget(
+      {Key? key,
+      required this.name,
+      required this.amount,
+      required this.deposit})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
       child: Slidable(
-        endActionPane: ActionPane(
+        startActionPane: ActionPane(
           motion: StretchMotion(),
+          children: [
+            SlidableAction(
+              flex: 500,
+              onPressed: addDepositFunction,
+              icon: Icons.add,
+              backgroundColor: Colors.green.shade800,
+              borderRadius: BorderRadius.circular(12),
+            )
+          ],
+        ),
+        endActionPane: ActionPane(
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
               onPressed: deleteFunction,
@@ -27,31 +49,21 @@ class GoalCardWidget extends StatelessWidget {
         ),
         child: Container(
           padding: const EdgeInsets.all((12)),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width/(1/(4000/amount)),
-                child: (Text('${(MediaQuery.of(context).size.width-20)/(1/(1200/amount))}')),
-                decoration: BoxDecoration(
-                  color:Colors.blue,//borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black)
-                ),
-                child: Row(
-                  children: [
-                    Text(''),
-                    Spacer(),
-                    Text('$amount/0')
-                  ],
-                ),
-              )
-            ]
-            ),
+          child: Column(
+            children: [
+              Text(name, style: const TextStyle(fontSize: 24)),
+              LinearPercentIndicator(
+                  animation: true,
+                  animationDuration: 500,
+                  percent: deposit / amount,
+                  progressColor: Colors.blue,
+                  lineHeight: 15,
+                  center: Text("$deposit/$amount"),
+                  barRadius: const Radius.circular(12))
+            ],
           ),
         ),
+      ),
     );
   }
 }
